@@ -1,0 +1,45 @@
+.tarjeta {
+    flex: 1;
+    max-width: 100%;
+    /* Hace que cada tarjeta sea cuadrada */
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 20px;
+    /* Espaciado entre las tarjetas */
+}
+
+.cuerpo-tarjeta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Rubik', sans-serif;
+    font-size: 13px;
+}
+
+.card-body mat-icon {
+    margin-bottom: 10px;
+}
+
+.title-msg{
+    font-size: 24px;
+    font-family: 'Rubik', sans-serif;
+    margin: 20px 0px;
+}
+
+body {
+    height: 83vh;
+}
+
+.overflow{
+    height: 406px; /* Ajusta la altura según sea necesario */
+    overflow: auto; /* Agrega una barra de desplazamiento cuando sea necesario */
+}
+
+.msg-user{
+    padding: 10px;
+}

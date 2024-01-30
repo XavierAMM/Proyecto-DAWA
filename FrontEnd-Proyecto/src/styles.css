@@ -1,0 +1,96 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Inicio Header */
+
+.color-lineBorder {
+    color: #DAE1E7;
+}
+
+.color-background {
+    color: #000000;
+}
+
+.color-search {
+    color: #4B566B;
+}
+
+.color-titleBg {
+    color: #F6F9FC;
+}
+
+.color-titleText {
+    color: #373F50;
+}
+
+.color-text1 {
+    color: #7D879C;
+}
+
+.activo {
+    color: #1558AF
+}
+
+.bt-activo {
+    background-color: #1558AF;
+    color: #FFFFFF;
+    font-size: 11px;
+    font-family: 'Rubik', sans-serif;
+}
+
+h2 {
+    font-size: 28px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.navbar-brand {
+    margin-left: 15px;
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    padding: 0 15px;
+}
+
+.banner {
+    padding: 45px 50px;
+    background-color: #F6F9FC;
+}
+
+.elementos-header {
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.iconos-header {
+    font-size: 13px;
+    vertical-align: middle;
+    padding: 5px 5px;
+}
+
+.cerrar-sesion {
+    font-size: 15px;
+    vertical-align: middle;
+    padding: 3px 5px;
+}
+
+.container-fluid {
+    max-width: 95%;
+    overflow-x: auto;
+}
+
+
+.container-messages {
+    max-width: 99.9%;
+    overflow-x: auto;
+}
+
+/* Fin Header */

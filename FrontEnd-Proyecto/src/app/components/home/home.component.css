@@ -1,0 +1,82 @@
+section{
+    margin-top: 10px;
+}
+
+.img-home {
+    width: 300px;
+    height: 150px;
+    border-radius: 35px; 
+    cursor: pointer;
+}
+
+.games-border{
+    border: 1px solid #DAE1E7;
+}
+
+.games-text{
+    font-family: 'Rubik', sans-serif;
+    font-size: 14px;
+    margin: 0;
+}
+
+.games-container{
+    display: flex;
+    flex-direction: column;
+    max-width: 75%;
+    margin: 20px auto;
+}
+
+.header-games {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px; 
+    background-color: #F6F9FC;
+}
+
+mat-icon{
+    cursor: pointer;
+}
+
+.games {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: wrap;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.tarjeta-games{
+    width: 330px;
+    margin: 20px 20px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.game-name {
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.game-picture {
+    width: 100%;
+    max-height: 150px; /* Altura máxima de la imagen */
+    object-fit: cover; /* Ajusta la imagen dentro del contenedor */
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.game-options {
+    display: flex;
+    align-items: center; /* Centra los elementos verticalmente */
+}
+
+.price {
+    margin-left: 0px;
+    font-size: 13px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.cart-icon{
+    font-size: 20px;
+}

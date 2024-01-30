@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    align-items: center;
+    height: 70vh; /* O ajusta la altura según tus necesidades */
+    border: 0%;
+    padding: 0%;
+  }
+  
+  .containerTarjeta{
+  
+    width: 350px;
+    margin: auto;
+    padding: 20px;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    /* flex-basis: 0;
+    flex-grow: 999;
+    min-width: 60%; */
+  }
+  
+  
+  .tituloTarjeta{
+    text-align: center;
+  }
+  
+  
+  .ng-valid:not(form).ng-touched{
+    border: 5px solid #42A948;
+  }
+  
+  .ng-invalid:not(form).ng-touched {
+  border: 5px solid #a94442;
+  }
+  
+  

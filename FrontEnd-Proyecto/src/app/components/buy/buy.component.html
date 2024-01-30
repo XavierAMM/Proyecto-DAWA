@@ -1,0 +1,214 @@
+<header>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" routerLink="/home">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-search" aria-current="page" routerLink="/my-games">Mis Juegos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-search activo" aria-current="page" routerLink="/cart">Mi Carrito</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-search" aria-current="page" routerLink="/catalogue">Catálogo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-search" aria-current="page" routerLink="/contact">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="banner d-flex justify-content-between align-items-center">
+        <h2 class="color-titleText">Comprar</h2>
+        <button type="button" class="btn btn-primary d-flex align-items-center" routerLink="/cart">
+            <mat-icon fontIcon="arrow_back" class="mr-2 cerrar-sesion"></mat-icon> <span>Regresar al carrito</span>
+        </button>
+        <div class="elementos-header d-flex align-items-center">
+            <mat-icon class="iconos-header color-search" fontIcon="home"></mat-icon>
+            <p class="elementos-header color-search m-0 ml-2">Inicio</p>
+            <mat-icon fontIcon="chevron_right" class="ml-2 iconos-header color-text1"></mat-icon>
+            <p class="elementos-header m-0 ml-2 color-text1">Mi Carrito</p>
+            <mat-icon fontIcon="chevron_right" class="ml-2 iconos-header color-text1"></mat-icon>
+            <p class="elementos-header m-0 ml-2 color-text1">Comprar</p>
+        </div>
+    </div>
+    <div class="d-flex justify-content-end align-items-center" style="margin: 0px 25px;" *ngIf="currentUser != null">
+        <button type="button"  (click)="cerrarSesion()" class="btn bt-activo d-flex align-items-center">
+            <mat-icon fontIcon="logout" class="mr-2 cerrar-sesion"></mat-icon> <span>Cerrar Sesión</span>
+        </button>
+    </div>
+</header>
+
+<body>
+    <section *ngIf="!loading">
+        <form [formGroup]="form" (ngSubmit)="comprarProductos()">
+            <div class="games-container games-border">
+                <div class="header-games games-border">
+                    <span class="games-text color-text1"><strong>INFORMACIÓN DEL USUARIO</strong></span>
+                </div>
+
+                <div class="mt-3" style="padding: 15px;">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="form-floating">
+                                <input type="text" id="nombre" class="form-control" autocomplete="off"
+                                    placeholder="Nombre*" disabled value="{{currentUser?.nombre}}" readonly>
+                                <label for="nombre">Nombre*</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="form-floating">
+                                <input type="text" id="apellido" class="form-control" autocomplete="off"
+                                    placeholder="Apellido*" value="{{currentUser?.apellido}}" required disabled readonly>
+                                <label for="apellido">Apellido*</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" id="correo" class="form-control" autocomplete="off" placeholder="Correo*"
+                            required value="{{currentUser?.email}}" disabled readonly>
+                        <label for="correo">Correo*</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" id="celular" class="form-control" autocomplete="off" placeholder="Celular*"
+                            required formControlName="celular">
+                        <label for="celular">Celular*</label>
+                    </div>
+
+                    
+
+                    <div class="form-floating mb-3">
+                        <input type="text" id="direccion" class="form-control" autocomplete="off"
+                            placeholder="Dirección*" required formControlName="direccion">
+                        <label for="direccion">Dirección*</label>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="games-container games-border">
+                <div class="header-games games-border">
+                    <span class="games-text color-text1"><strong>MÉTODO DE PAGO</strong></span>
+                </div>
+                <div class="mt-3" style="padding: 15px;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="icon-container">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/MasterCard_Logo.svg/200px-MasterCard_Logo.svg.png"
+                                    alt="MasterCard" class="icon">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Former_Visa_%28company%29_logo.svg"
+                                    alt="Visa" class="icon">
+                                <span>Mastercard o Visa</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6 mb-3">
+                            <div class="form-floating">
+                                <input type="text" id="num_tar" class="form-control" autocomplete="off"
+                                    placeholder="Número de tarjeta*" required formControlName="num_tar">
+                                <label for="num_tar">Número de tarjeta*</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="form-floating">
+                                <input type="text" id="mes" class="form-control" autocomplete="off" placeholder="MM*"
+                                    required formControlName="mes">
+                                <label for="mes">MM*</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="form-floating">
+                                <input type="number" id="year" class="form-control" autocomplete="off" placeholder="YY*"
+                                    required formControlName="year">
+                                <label for="year">YY*</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9 mb-3">
+                            <div class="form-floating">
+                                <input type="text" id="nombre_tar" class="form-control" autocomplete="off"
+                                    placeholder="Nombre del titular*" required formControlName="nombre_tar">
+                                <label for="nombre_tar">Nombre del titular*</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="form-floating">
+                                <input type="number" id="cvv" class="form-control" autocomplete="off" placeholder="CVV*"
+                                    required formControlName="cvv">
+                                <label for="cvv">CVV*</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="games-container games-border" >
+                <div class="header-games games-border">
+                    <span class="games-text color-text1"><strong>RESUMEN DE LA ORDEN</strong></span>
+                </div>
+                <div class="mt-3" style="padding: 15px;">
+                    <div class="card productos-card mx-auto" style="max-width: 500px;">
+                        <div class="card-header">
+                            <h5 class="card-title mt-3 color-text1">JUEGO(S) A COMPRAR (2)</h5>
+                        </div>
+                        <div class="card-body" style="max-height: 275px; overflow-y: auto;">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Nombre</th>
+                                            <th scope="col">Precio ($)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let p of listProductos; let i = index">
+                                            <th scope="row">{{i+1}}</th>
+                                            <td>
+                                                <div class="media">
+                                                    <div class="media-body">
+                                                        <span>{{p.nombreProducto}}</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>{{p.precioAntes}}</td>                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card subtotales mx-auto mt-3" style="max-width: 500px;">
+                        <div class="card-body">
+                            <span class="d-block"><strong>Total a Pagar: ${{total}}</strong></span>
+                        </div>
+                    </div>
+                    <div class="text-center mt-3">
+                        <div class="form-check d-flex align-items-center justify-content-center">
+                            <input class="form-check-input" type="checkbox" id="termsCheckbox" required formControlName="terms">
+                            <label class="form-check-label" for="termsCheckbox" style="padding-left: 10px;">
+                                He leído y acepto los <span class="activo" style="cursor: pointer;">términos y
+                                    condiciones</span>.
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-success mt-3" [disabled]="form.invalid">
+                        <span>Finalizar Compra</span>
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </section>
+</body>

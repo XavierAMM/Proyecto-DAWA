@@ -1,0 +1,96 @@
+<header>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link activo" aria-current="page" routerLink="/home">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-search" aria-current="page" routerLink="/my-games">Mis Juegos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-search" aria-current="page" routerLink="/cart">Mi Carrito</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-search" aria-current="page" routerLink="/catalogue">Catálogo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-search" aria-current="page" routerLink="/contact">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="banner d-flex justify-content-between align-items-center">
+        <h2 class="color-titleText">Inicio</h2>
+        <div class="elementos-header d-flex align-items-center">
+            <mat-icon class="iconos-header color-search" fontIcon="home"></mat-icon>
+            <p class="elementos-header color-search m-0 ml-2">Inicio</p>
+            <mat-icon fontIcon="chevron_right" class="ml-2 iconos-header color-text1"></mat-icon>
+            <p class="elementos-header m-0 ml-2 color-text1">Inicio</p>
+        </div>
+    </div>
+</header>
+
+<body>
+    <div class="container">
+        <div class="containerTarjeta">
+          <p class="tituloTarjeta">Registro de usuario</p>
+          <form [formGroup]="FormularioRegistro">
+            <div class="mb-3">
+      
+              <label for="exampleInputEmail1" class="form-label">Nombres</label>
+              <input formControlName="nombre" type="text" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp">
+              <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="text-danger">
+      
+                <div *ngIf="nombre.errors?.['required']">
+                  Los nombres son requerido
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Apellidos</label>
+              <input formControlName="apellido" type="text" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp">
+              <div *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)" class="text-danger">
+      
+                <div *ngIf="apellido.errors?.['required']">
+                  Los Apellidos son requeridos
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email</label>
+              <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp">
+              <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+      
+                <div *ngIf="email.errors?.['required']">
+                  El email es requerido
+                </div>
+                <div *ngIf="email.errors?.['email']">
+                  El email debe tener un formato valido
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+              <input formControlName="password" type="texto" class="form-control" id="exampleInputPassword1">
+              <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+      
+                <div *ngIf="password.errors?.['required']">
+                  La contraseña es requerida
+                </div>
+              </div>
+            </div>
+      
+            <button type="submit" (click)="registro()" class="btn btn-dark">Aceptar</button> &nbsp;
+            <button type="submit" (click)="cancelarRegistro()" class="btn btn-dark">Cancelar</button>
+          </form>
+      
+        </div>
+      </div>
+</body>

@@ -1,0 +1,106 @@
+.games-border{
+    border: 1px solid #DAE1E7;
+}
+
+.games-text{
+    font-family: 'Rubik', sans-serif;
+    font-size: 14px;
+    margin: 0;
+}
+
+.games-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.games-container, .container{
+    max-width: 50%;
+    margin: 20px auto;
+}
+
+.header-games {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px; 
+    background-color: #F6F9FC;
+}
+
+
+mat-icon{
+    cursor: pointer;
+}
+
+.games {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: wrap;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.tarjeta-games{
+    width: 275px;
+    margin: 20px 20px;
+    max-height: 225px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.game-name {
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.game-picture {
+    width: 100%;
+    max-height: 150px; /* Altura máxima de la imagen */
+    object-fit: cover; /* Ajusta la imagen dentro del contenedor */
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.cart-icon{
+    font-size: 20px;
+}
+
+/* editado */
+.game-options {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+}
+
+/* Nuevo */
+.icon-container {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    width: 40px; /* Ajusta el tamaño de las imágenes según tus necesidades */
+    margin-right: 10px; /* Espaciado entre las imágenes y el texto */
+}
+
+.card-number,
+.expiration-date,
+.cardholder-name,
+.cvv-number {
+    margin-bottom: 15px;
+}
+
+.card-title {
+    font-size: 20px; /* Ajusta el tamaño del título según tus preferencias */
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Rubik', sans-serif;
+}
+.card-header{
+    background-color: #F6F9FC;
+}
+
+
+.btn-success {
+    display: block;
+    margin: 0 auto;
+}

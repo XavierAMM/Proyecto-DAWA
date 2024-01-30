@@ -1,0 +1,30 @@
+<header>
+    <div class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+        <p class="navbar-brand">Bienvenidos a TechnoThings</p>
+    </div>
+    <div class="main container-fluid">
+        <div class="row">
+            <div class="col-2">
+                <h1>TechnoThings</h1>
+            </div>
+            <div class="col-7">
+                <div class="input-group mb-3">
+                    <a href="#" class="input-group-text" id="inputGroup-sizing-default"> <mat-icon fontIcon="search"></mat-icon></a>
+                    <input autocomplete="off" placeholder="Buscar..." type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="container">
+                    <div class="row">
+                        <a routerLink="/my-games" class="col-sm-2"><mat-icon class="mi-perfil boton" fontIcon="person"></mat-icon></a>
+                        <a routerLink="/my-games" *ngIf="currentUser == null" class="col-sm mt-1">Iniciar Sesión</a>
+                        <a routerLink="/my-games" *ngIf="currentUser != null" class="col-sm mt-1">{{currentUser.nombre}}</a>
+                        <a routerLink="/cart" class="col-sm-2"><mat-icon class="mi-carrito boton" fontIcon="shopping_cart"></mat-icon></a>
+                        <a routerLink="/cart" class="col-sm mt-1">Mi carrito</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+

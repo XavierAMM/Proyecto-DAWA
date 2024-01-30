@@ -1,0 +1,85 @@
+<header>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link activo" aria-current="page" routerLink="/home">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-search" aria-current="page" routerLink="/my-games">Mis Juegos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-search" aria-current="page" routerLink="/cart">Mi Carrito</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-search" aria-current="page" routerLink="/catalogue">Catálogo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-search" aria-current="page" routerLink="/contact">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="banner d-flex justify-content-between align-items-center">
+        <h2 class="color-titleText">Inicio</h2>
+        <div class="elementos-header d-flex align-items-center">
+            <mat-icon class="iconos-header color-search" fontIcon="home"></mat-icon>
+            <p class="elementos-header color-search m-0 ml-2">Inicio</p>
+            <mat-icon fontIcon="chevron_right" class="ml-2 iconos-header color-text1"></mat-icon>
+            <p class="elementos-header m-0 ml-2 color-text1">Inicio</p>
+        </div>
+    </div>
+    <div class="d-flex justify-content-end align-items-center" style="margin: 0px 25px;" *ngIf="currentUser != null">
+        <button (click)="cerrarSesion()" type="button" class="btn bt-activo d-flex align-items-center">
+            <mat-icon fontIcon="logout" class="mr-2 cerrar-sesion"></mat-icon> <span>Cerrar Sesión</span>
+        </button>
+    </div>
+</header>
+
+<body>
+    <section>
+        <div class="container-fluid">
+            <div class="row justify-content-center text-center">
+                <img class="img-home"
+                    src="https://larepublica.cronosmedia.glr.pe/migration/images/KTEBFGA6HZCLNOHJ63DAVNKHBM.jpg" alt="">
+                <img class="img-home"
+                    src="https://diariohoynet.nyc3.cdn.digitaloceanspaces.com/adjuntos/galerias/000/450/0000450277.jpg"
+                    alt="">
+                <img class="img-home"
+                    src="https://phantom-elmundo.unidadeditorial.es/0a6231b36809a0afca171a6801a5811f/resize/414/f/jpg/assets/multimedia/imagenes/2020/11/23/16061299267951.jpg"
+                    alt="">
+                <img class="img-home"
+                    src="https://image.api.playstation.com/pr/bam-art/169/474/92a48ffc-25c8-4f38-9d10-d96172b169e1.png"
+                    alt="">
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="games-container games-border">
+            <div class="header-games games-border">
+                <span class="games-text color-text1"><strong>Juegos principales</strong></span>
+                <a class="games-text activo" routerLink="/catalogue" style="margin-left: auto;">Ver catálogo completo...</a>
+            </div>
+            <div class="games" *ngIf="!error">
+                <div class="game card tarjeta-games" *ngFor="let e of listProductos">
+                    <div class="game-name color-text1">{{e.nombreProducto}}</div>
+                    <img class="game-picture" src="{{e.urlImg}}"  alt="">
+                    <div class="game-options">
+                        <mat-icon data-toggle="tooltip" title="Agregar al carrito" (click)="agregarCarrito(e.productoId!)" class="cart-icon color-text1" fontIcon="add_shopping_cart" *ngIf="existeProductoIdEnListaItems(e.productoId!) == 0"></mat-icon>
+                        <mat-icon data-toggle="tooltip" title="Eliminar del carrito" (click)="eliminarCarrito(e.productoId!)" class="cart-icon color-text1" fontIcon="remove_shopping_cart" *ngIf="existeProductoIdEnListaItems(e.productoId!) == 1"></mat-icon>
+                        <mat-icon data-toggle="tooltip" title="Comprado" routerLink="/cart" class="cart-icon color-text1" fontIcon="price_check" *ngIf="existeProductoIdEnListaItems(e.productoId!) == 2"></mat-icon>
+                        <div class="price  color-text1">Precio: ${{e.precioAntes}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        $(document).ready(function () {
+          $('[data-toggle="tooltip"]').tooltip();
+        });
+      </script>
+</body>

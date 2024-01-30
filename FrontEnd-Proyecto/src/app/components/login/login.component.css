@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    align-items: center;
+    height: 70vh; /* O ajusta la altura según tus necesidades */
+    border: 0%;
+    padding: 0%;
+  }
+  
+  .contenedorTarjeta{
+    width: 350px;
+    margin: auto;
+    padding: 20px;
+    border: 2px solid #0c22e7;
+    border-radius: 10px;
+    box-shadow: black;
+    background-color: white;
+    /* flex-basis: 20rem;
+    flex-grow: 999;
+    min-width: 60%; */
+  
+  }
+  
+  .tituloLogin{
+    text-align: center;
+  }
+  
+  
+  .ng-valid:not(form).ng-touched{
+      border: 5px solid #42A948;
+  }
+  
+  .ng-invalid:not(form).ng-touched {
+    border: 5px solid #a94442;
+  }
+  
+  

@@ -1,0 +1,33 @@
+.navbar-brand{
+    margin-left: 15px;
+    margin-bottom: 0;
+    font-size: 14px;
+    color: #D9D9D9;
+    font-family: 'Rubik', sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: #4b566b;
+}
+
+li{
+    padding: 0 15px;
+}
+
+.main{
+    padding-top: 10px;
+}
+
+.elemento{
+    display: inline-block;
+}
+
+h1{
+    font-size: 32px;
+    font-family: 'Inter', sans-serif;
+}
+
+.activo{
+    color: #1558AF
+}

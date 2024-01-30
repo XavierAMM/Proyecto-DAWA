@@ -1,0 +1,131 @@
+<header>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" routerLink="/home">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-search" aria-current="page" routerLink="/my-games">Mis Juegos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-search" aria-current="page" routerLink="/cart">Mi Carrito</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-search" aria-current="page" routerLink="/catalogue">Catálogo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-search" aria-current="page" routerLink="/contact">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="banner d-flex justify-content-between align-items-center">
+        <h2 class="color-titleText">Cambiar Correo / Nombre</h2>
+        <div class="elementos-header d-flex align-items-center">
+            <mat-icon class="iconos-header color-search" fontIcon="home"></mat-icon>
+            <p class="elementos-header color-search m-0 ml-2">Inicio</p>
+            <mat-icon fontIcon="chevron_right" class="ml-2 iconos-header color-text1"></mat-icon>
+            <p class="elementos-header m-0 ml-2 color-text1">Cambiar Correo / Nombre</p>
+        </div>
+    </div>
+    <div class="d-flex justify-content-end align-items-center" style="margin: 0px 25px;" *ngIf="currentUser != null">
+        <button type="button" (click)="cerrarSesion()" class="btn bt-activo d-flex align-items-center">
+            <mat-icon fontIcon="logout" class="mr-2 cerrar-sesion"></mat-icon> <span>Cerrar Sesión</span>
+        </button>
+    </div>
+</header>
+
+
+<div class="container">
+    <div class="contenedorTarjeta">
+  <mat-tab-group>
+    <mat-tab label="Lista de Estado">
+      <table mat-table [dataSource]="listaEstado" class="text-center">
+  
+        <!-- id Column -->
+        <ng-container matColumnDef="Id">
+          <th mat-header-cell *matHeaderCellDef class="text-center"> Id </th>
+          <td mat-cell *matCellDef="let element" class="text-center"> {{element.estadoId}} </td>
+        </ng-container>
+  
+        <!-- descripcion Column -->
+        <ng-container matColumnDef="Descripcion">
+          <th mat-header-cell *matHeaderCellDef class="text-center"> Descripcion </th>
+          <td mat-cell *matCellDef="let element" class="text-center"> {{element.descripcion}} </td>
+        </ng-container>
+  
+        <!-- opciones Column -->
+        <ng-container matColumnDef="Opciones">
+          <th mat-header-cell *matHeaderCellDef class="text-center"> Opciones </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="row">
+              <button mat-button (click)="eliminar(element.estadoId)">
+                <mat-icon aria-hidden="false" aria-label="delete" fontIcon="delete"></mat-icon>
+              </button>
+              <button mat-button (click)="editar(element)">
+                <mat-icon aria-hidden="false" aria-label="edit" fontIcon="edit"></mat-icon>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+  
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+  
+      <!-- para saber que ingreso al proceso -->
+      <div *ngIf="edit==true">
+        <form [formGroup]="Formulario">
+          <div class="col-12">
+            <div class="row">
+              <div class="col-12 col-md-6 p-2">
+                <mat-form-field>
+                  <mat-label>Modifique la descripcion</mat-label>
+                  <input matInput placeholder="Descripcion" formControlName="descripcion">
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-6 p-2">
+                <button type="submit" class="btn btn-dark" [disabled]="Formulario.invalid" (click)="guardar()">
+                  Guardar
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+  
+    </mat-tab>
+    <mat-tab label="Registrar un estado" onclick="limpiar()">
+      <form [formGroup]="FormularioAgg">
+        <div class="col-12">
+          <div class="row">
+            <div class="col-12 col-md-6 p-2">
+              <label class="form-label">Descripción</label>
+              <input formControlName="descripcion" type="text" class="form-control" aria-describedby="emailHelp">
+              <div *ngIf="valido('descripcion')" class="text-danger">
+                <div>
+                  La descripción es requerida!!
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 p-2">
+              <button type="submit" class="btn btn-dark" (click)="agregarDescripcion()">
+                <mat-icon aria-hidden="false" aria-label="delete" fontIcon="add"></mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- {{Formulario.value|json}} -->
+        
+      </form>
+    </mat-tab>
+  </mat-tab-group>
+  </div>
+  </div>
+  

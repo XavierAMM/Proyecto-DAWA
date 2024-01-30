@@ -1,0 +1,116 @@
+<header>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" routerLink="/home">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-search" aria-current="page" routerLink="/my-games">Mis Juegos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-search activo" aria-current="page" routerLink="/cart">Mi Carrito</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-search" aria-current="page" routerLink="/catalogue">Catálogo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-search" aria-current="page" routerLink="/contact">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="banner d-flex justify-content-between align-items-center">
+        <h2 class="color-titleText">Mi Carrito</h2>
+        <div class="elementos-header d-flex align-items-center">
+            <mat-icon class="iconos-header color-search" fontIcon="home"></mat-icon>
+            <p class="elementos-header color-search m-0 ml-2">Inicio</p>
+            <mat-icon fontIcon="chevron_right" class="ml-2 iconos-header color-text1"></mat-icon>
+            <p class="elementos-header m-0 ml-2 color-text1">Mi Carrito</p>
+        </div>
+    </div>
+    <div class="d-flex justify-content-end align-items-center" style="margin: 0px 25px;" *ngIf="currentUser != null">
+        <button type="button" (click)="cerrarSesion()" class="btn bt-activo d-flex align-items-center">
+            <mat-icon fontIcon="logout" class="mr-2 cerrar-sesion"></mat-icon> <span>Cerrar Sesión</span>
+        </button>
+    </div>
+</header>
+
+<body>
+    <div class="sections-container">
+        <section>
+            <div class="games-container games-border">
+                <div class="header-games games-border">
+                    <span class="games-text color-text1"><strong>DETALLES DE LA CUENTA</strong></span>
+                </div>
+                <div class="details">
+                    <div class="option mis-juegos games-border" routerLink="/my-games">
+                        <div class="d-flex align-items-center">
+                            <mat-icon class="option-icon" fontIcon="videogame_asset"></mat-icon>
+                            <div class="option-text ml-2">Mis Juegos ({{listProductos.length}})</div>
+                        </div>
+                    </div>
+                    <div class="option mi-carrito games-border" style="background-color: #F6F9FC;" routerLink="/cart">
+                        <div class="d-flex align-items-center">
+                            <mat-icon class="activo color-search option-icon" fontIcon="shopping_cart"></mat-icon>
+                            <div class="activo color-search option-text ml-2">Mi Carrito ({{listCarritos.length}})</div>
+                        </div>
+                    </div>
+                    <div class="option cambiar-contra games-border" routerLink="/change-password">
+                        <div class="d-flex align-items-center">
+                            <mat-icon class="color-search option-icon" fontIcon="lock"></mat-icon>
+                            <div class="color-search option-text ml-2">Cambiar Contraseña</div>
+                        </div>
+                    </div>
+                    <div class="option cambiar-correo games-border" routerLink="/change-email">
+                        <div class="d-flex align-items-center">
+                            <mat-icon class="color-search option-icon" fontIcon="mail"></mat-icon>
+                            <div class="color-search option-text ml-2">Cambiar Correo / Nombre</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="games-container games-border">
+                <div class="header-games games-border">
+                    <span class="games-text color-text1"><strong>MI CARRITO ({{listCarritos.length}})</strong></span>
+
+                    <div class="d-flex justify-content-end align-items-center" style="margin-left: auto;">
+                        <button type="button" class="btn btn-secondary d-flex align-items-center" routerLink="/buy" *ngIf="listCarritos.length>0">
+                            <mat-icon fontIcon="shop_two" class="mr-2 cerrar-sesion"></mat-icon> <span>Comprar todos</span>
+                        </button>
+                    </div>
+                </div>
+
+
+                <div class="games" *ngIf="!loading">
+                    <div class="game card tarjeta-games" *ngFor="let e of listCarritos">
+                        <div class="game-name color-text1">{{e.nombreProducto}}</div>
+                        <img class="game-picture" src="{{e.urlImg}}" alt="">
+                        <div class="game-options">
+                            <div class="install" style="cursor: pointer;">
+                                <mat-icon data-toggle="tooltip" title="Eliminar del carrito" (click)="eliminarCarrito(e.productoId!)" class="cart-icon color-text1"
+                                    fontIcon="remove_shopping_cart"></mat-icon>
+                                <div class="price color-text1">Precio: ${{e.precioAntes}}</div>
+                            </div>
+                            <div class="other-option">
+                                <mat-icon (click)="comprarUno(e.productoId!)" data-toggle="tooltip" title="Comprar" fontIcon="shop" class="more-info color-text1 mb-0"></mat-icon>
+                                <mat-icon data-toggle="tooltip" title="Información" fontIcon="info" class="more-info color-text1 mb-0"></mat-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script>
+        $(document).ready(function () {
+          $('[data-toggle="tooltip"]').tooltip();
+        });
+      </script>
+</body>

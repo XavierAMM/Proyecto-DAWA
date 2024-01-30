@@ -1,0 +1,59 @@
+<header>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link activo" aria-current="page" routerLink="/home">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-search" aria-current="page" routerLink="/my-games">Mis Juegos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-search" aria-current="page" routerLink="/cart">Mi Carrito</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-search" aria-current="page" routerLink="/catalogue">Catálogo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-search" aria-current="page" routerLink="/contact">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="banner d-flex justify-content-between align-items-center">
+        <h2 class="color-titleText">Inicio</h2>
+        <div class="elementos-header d-flex align-items-center">
+            <mat-icon class="iconos-header color-search" fontIcon="home"></mat-icon>
+            <p class="elementos-header color-search m-0 ml-2">Inicio</p>
+            <mat-icon fontIcon="chevron_right" class="ml-2 iconos-header color-text1"></mat-icon>
+            <p class="elementos-header m-0 ml-2 color-text1">Inicio</p>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="contenedorTarjeta">
+        <form [formGroup]="FormularioRecuperar">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Escriba el correo de su cuenta para restablecer la
+                    contraseña </label>
+                <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp">
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+
+                    <div *ngIf="email.errors?.['required']">
+                        El Email es requerido!!
+                    </div>
+                    <div *ngIf="email.errors?.['email']">
+                        El Email debe tener un formato valido!!
+                    </div>
+                </div>
+            </div>
+            <button type="submit" (click)="recuperarBtnAceptar()" class="btn btn-dark">Aceptar</button> &nbsp;
+            <button type="submit" (click)="recuperarBtnCancelar()" class="btn btn-dark">Cancelar</button>
+        </form>
+    </div>
+</div>

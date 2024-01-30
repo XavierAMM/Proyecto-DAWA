@@ -1,0 +1,121 @@
+.games-border{
+    border: 1px solid #DAE1E7;
+}
+
+.games-text{
+    font-family: 'Rubik', sans-serif;
+    font-size: 14px;
+    margin: 0;
+}
+
+.games-container{
+    display: flex;
+    flex-direction: column;
+    max-width: 75%;
+    margin: 20px auto;
+}
+
+.header-games {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px; 
+    background-color: #F6F9FC;
+}
+
+
+mat-icon{
+    cursor: pointer;
+}
+
+.games {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: wrap;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.tarjeta-games{
+    width: 275px;
+    margin: 20px 20px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.game-name {
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.game-picture {
+    width: 100%;
+    max-height: 150px; /* Altura máxima de la imagen */
+    object-fit: cover; /* Ajusta la imagen dentro del contenedor */
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.cart-icon{
+    font-size: 20px;
+}
+
+/* editado */
+.game-options {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+}
+
+
+/* nuevo */
+.sections-container {
+    display: flex;
+}
+
+.sections-container section:first-child {
+    flex: 1; 
+    z-index: 1;
+}
+
+.sections-container section:last-child {
+    flex: 3; 
+    margin-left: -200px; 
+    position: relative; 
+}
+
+.option {
+    cursor: pointer;
+    padding: 19px;
+}
+
+.option-text { 
+    font-size: 14px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.option-icon{
+    margin-right: 16px;
+}
+
+.install {
+    display: flex;
+    align-items: center;
+}
+
+.text-install {
+    margin-left: 0px;
+    font-size: 14px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.more-info {
+    cursor: pointer;
+    margin-left: auto; 
+    font-size: 14px;
+}
+
+.contenedor-formulario{
+    margin: 20px;
+    padding: 20px;
+}
